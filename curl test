@@ -1,0 +1,12 @@
+New Project - curl -H "Content-Type: application/json" -X POST -d '{"name":"POSTed Project 1","description":"qwer","description_long":"asdf","url":"www.example.com"}' http://localhost:8080/project
+
+Update existing Project - curl -H "Content-Type: application/json" -X PUT -d '{"name":"Updated POSTed project","description":"Using PUT now"}' http://localhost:8080/project/2
+
+Another New Project - curl -H "Content-Type: application/json" -X POST -d '{"name":"Testing another POST","description":"oiuwe","description_long":"2354sfa","url":"www.example.com/other_thing"}' http://localhost:8080/project
+
+Index all Projects - curl -H "Content-Type: application/json" -X GET http://localhost:8080/projects
+
+Delete one Project - curl -H "Content-Type: application/json" -X DELETE http://localhost:8080/project/2
+
+
+
