@@ -1,8 +1,8 @@
 package main.java.portfolio.models;
 
-import supahnickie.caffeine.*;
 import java.util.Map;
 import java.util.HashMap;
+import supahnickie.caffeine.CaffeineObject;
 
 public class User extends CaffeineObject {
 	@SuppressWarnings("rawtypes")

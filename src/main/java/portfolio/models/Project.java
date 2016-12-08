@@ -1,9 +1,9 @@
 package main.java.portfolio.models;
 
-import supahnickie.caffeine.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Map;
 import java.util.HashMap;
+import supahnickie.caffeine.CaffeineObject;
 
 @JsonIgnoreProperties({ "validationErrors", "currentQuery", "firstCondition", "placeholders" })
 public class Project extends CaffeineObject {
