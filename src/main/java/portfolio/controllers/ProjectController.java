@@ -1,8 +1,10 @@
 package main.java.portfolio.controllers;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import main.java.portfolio.models.Project;
+import main.java.portfolio.queries.ProjectQueries;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,14 +16,14 @@ import supahnickie.caffeine.CaffeineObject;
 @RestController
 public class ProjectController {
 	@RequestMapping(value = "/projects", method = RequestMethod.GET)
-	public List<CaffeineObject> index() throws Exception {
+	public List<HashMap<String, Object>> index() throws Exception {
 		CaffeineObject.setQueryClass(Project.class);
-		return CaffeineConnection.rawQuery("select * from projects");
+		return CaffeineConnection.rawQuery(ProjectQueries.getIndexQuery());
 	}
 
 	@RequestMapping(value = "/project/{projectId}", method = RequestMethod.GET)
-	public CaffeineObject show(@PathVariable int projectId) throws Exception {
-		return CaffeineObject.find(Project.class, projectId);
+	public List<HashMap<String, Object>> show(@PathVariable int projectId) throws Exception {
+		return CaffeineConnection.rawQuery(ProjectQueries.getShowQuery(), projectId);
 	}
 
 	@RequestMapping(value = "/project", method = RequestMethod.POST)

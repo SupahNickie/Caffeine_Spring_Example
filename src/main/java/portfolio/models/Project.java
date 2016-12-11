@@ -13,6 +13,7 @@ public class Project extends CaffeineObject {
 	
 	static {
 		caffeineAssociations.put(User.class, "belongsTo");
+		caffeineAssociations.put(Image.class, "hasMany");
 	}
 	
 	private int id;
@@ -22,7 +23,7 @@ public class Project extends CaffeineObject {
 	private String url;
 	
 	public Project() { }
-	
+
 	public boolean validate(String validationType) {
 		if (this.name == null) return false;
 		if (this.description == null) return false;
