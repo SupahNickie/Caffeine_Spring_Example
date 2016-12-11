@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import supahnickie.caffeine.Caffeine;
+import supahnickie.caffeine.CaffeineConnection;
 import supahnickie.caffeine.CaffeineObject;
 
 @RestController
@@ -16,7 +16,7 @@ public class ProjectController {
 	@RequestMapping(value = "/projects", method = RequestMethod.GET)
 	public List<CaffeineObject> index() throws Exception {
 		CaffeineObject.setQueryClass(Project.class);
-		return Caffeine.rawQuery("select * from projects");
+		return CaffeineConnection.rawQuery("select * from projects");
 	}
 
 	@RequestMapping(value = "/project/{projectId}", method = RequestMethod.GET)
