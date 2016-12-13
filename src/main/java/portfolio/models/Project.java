@@ -22,7 +22,9 @@ public class Project extends CaffeineObject {
 	private String description_long;
 	private String url;
 	
-	public Project() { }
+	public Project() throws Exception {
+		super();
+	}
 
 	public boolean validate(String validationType) {
 		if (this.name == null) return false;

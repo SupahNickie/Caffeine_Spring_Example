@@ -20,10 +20,8 @@ public class Image extends CaffeineObject {
 	private String url;
 	private boolean is_hero_image;
 
-	public Image(int projectId, String url, boolean isHeroImage) {
-		this.project_id = projectId;
-		this.url = url;
-		this.is_hero_image = isHeroImage;
+	public Image() throws Exception {
+		super();
 	}
 
 	public int getId() { return this.id; }

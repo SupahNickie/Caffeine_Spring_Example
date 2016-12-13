@@ -17,7 +17,9 @@ public class User extends CaffeineObject {
 	private String username;
 	private String password;
 	
-	public User() { }
+	public User() throws Exception {
+		super();
+	}
 	
 	public boolean validate(String validationType) {
 		return false;
