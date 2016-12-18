@@ -9,7 +9,7 @@ import supahnickie.caffeine.CaffeineObject;
 public class Image extends CaffeineObject {
 	@SuppressWarnings("rawtypes")
 	public static Map<Class, String> caffeineAssociations = new HashMap<Class, String>();
-	public static final String tableName = "projects";
+	public static final String tableName = "images";
 
 	static {
 		caffeineAssociations.put(Project.class, "belongsTo");
@@ -21,7 +21,13 @@ public class Image extends CaffeineObject {
 	private boolean is_hero_image;
 
 	public Image() throws Exception {
-		super();
+		init();
+	}
+
+	public boolean validate(String validationType) {
+		if (this.project_id == 0) return false;
+		if (this.url == null) return false;
+		return true;
 	}
 
 	public int getId() { return this.id; }

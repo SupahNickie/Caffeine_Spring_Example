@@ -23,7 +23,7 @@ public class Project extends CaffeineObject {
 	private String url;
 	
 	public Project() throws Exception {
-		super();
+		init();
 	}
 
 	public boolean validate(String validationType) {

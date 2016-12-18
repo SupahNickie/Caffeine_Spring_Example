@@ -43,6 +43,11 @@
 			<artifactId>caffeine</artifactId>
 			<version>5.1.0</version>
 		</dependency>
+		<dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk</artifactId>
+            <version>1.9.6</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -51,6 +56,11 @@
 
 
     <build>
+		<resources>
+            <resource>
+                <directory>${env.HOME}/.aws/</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

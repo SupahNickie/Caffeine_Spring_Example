@@ -18,7 +18,7 @@ public class User extends CaffeineObject {
 	private String password;
 	
 	public User() throws Exception {
-		super();
+		init();
 	}
 	
 	public boolean validate(String validationType) {

@@ -27,12 +27,12 @@ public class ProjectController {
 	}
 
 	@RequestMapping(value = "/project", method = RequestMethod.POST)
-	public Project create(@RequestBody Map<String, String> attrs) throws Exception {
+	public Project create(@RequestBody Map<String, Object> attrs) throws Exception {
 		Project p = new Project();
-		p.setName(attrs.get("name"));
-		p.setDescription(attrs.get("description"));
-		p.setDescriptionLong(attrs.get("description_long"));
-		p.setUrl(attrs.get("url"));
+		p.setName((String)attrs.get("name"));
+		p.setDescription((String)attrs.get("description"));
+		p.setDescriptionLong((String)attrs.get("description_long"));
+		p.setUrl((String)attrs.get("url"));
 		p.create();
 		return p;
 	}
