@@ -7,7 +7,8 @@ public class ProjectQueries {
 				"images.url as image_url " +
 				"from projects " +
 				"left outer join images on projects.id = images.project_id " +
-				"where images.is_hero_image = true";
+				"where images.is_hero_image = true " +
+				"order by projects.id asc";
 	}
 
 	public static final String getShowQuery() {
