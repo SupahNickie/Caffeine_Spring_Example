@@ -12,7 +12,6 @@ public class Project extends CaffeineObject {
 	public static final String tableName = "projects";
 	
 	static {
-		caffeineAssociations.put(User.class, "belongsTo");
 		caffeineAssociations.put(Image.class, "hasMany");
 	}
 	

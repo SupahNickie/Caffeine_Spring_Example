@@ -3,6 +3,7 @@ package main.java.portfolio.controllers;
 import java.util.Map;
 import java.util.UUID;
 import main.java.portfolio.models.Image;
+import main.java.portfolio.queries.ImageQueries;
 import main.java.portfolio.services.*;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import supahnickie.caffeine.CaffeineConnection;
 import supahnickie.caffeine.CaffeineObject;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ImageController {
 	@RequestMapping(value = "/project/{projectId}/images", method = RequestMethod.POST)
@@ -32,6 +35,7 @@ public class ImageController {
 	public Image update(@PathVariable int imageId, @RequestBody Map<String, Object> attrs) throws Exception {
 		Image i = (Image) CaffeineObject.find(Image.class, imageId);
 		i.update(attrs);
+		CaffeineConnection.rawUpdate(ImageQueries.updateOtherImagesToNonHeroStatus(), i.getId(), i.getProjectId());
 		return i;
 	}
 
