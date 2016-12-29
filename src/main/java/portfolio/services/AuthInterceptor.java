@@ -19,6 +19,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	boolean isAuthorized(HttpServletRequest request) {
 		return request.getMethod().equals("OPTIONS") || 
 				((request.getHeader("portfolio-authorization") != null) && 
-				(request.getHeader("portfolio-authorization").equals(System.getenv("PORTFOLIO_AUTHORIZATION_KEY"))));
+				(request.getHeader("portfolio-authorization").equals(System.getenv("PORTFOLIO_AUTHORIZATION_SECRET"))));
 	}
 }

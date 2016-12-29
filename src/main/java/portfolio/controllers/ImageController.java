@@ -1,5 +1,6 @@
 package main.java.portfolio.controllers;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import main.java.portfolio.models.Image;
@@ -21,6 +22,11 @@ import supahnickie.caffeine.CaffeineObject;
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ImageController {
+	@RequestMapping(value = "project/{projectId}/images", method = RequestMethod.GET)
+	public List<CaffeineObject> index(@PathVariable int projectId) throws Exception {
+		return CaffeineConnection.objectQuery(ImageQueries.getIndexQuery(), projectId);
+	}
+	
 	@RequestMapping(value = "/project/{projectId}/images", method = RequestMethod.POST)
 	public Image create(@PathVariable int projectId, @RequestParam MultipartFile image) throws Exception {
 		String s3Url = CloudStorage.init().convertAndUploadMultipartFile(projectId + "/pictures/" + UUID.randomUUID(), image);

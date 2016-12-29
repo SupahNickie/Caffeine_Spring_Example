@@ -9,6 +9,6 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new AuthInterceptor());
+		registry.addInterceptor(new AuthInterceptor()).excludePathPatterns("/sessions", "/projects");
 	}
 }
