@@ -2,12 +2,13 @@ package main.java.portfolio.queries;
 
 public class ProjectQueries {
 	public static final String getIndexQuery() {
-		return 	"select projects.*, " +
-				"images.id as image_id, " +
+		return 	"with img as " +
+				"(select images.project_id as image_project_id, " +
+				"images.id as image_id, " + 
 				"images.url as image_url " +
-				"from projects " +
-				"left outer join images on projects.id = images.project_id " +
-				"where images.is_hero_image = true " +
+				"from images where images.is_hero_image = true) " +
+				"select projects.*, img.image_id, img.image_url " +
+				"from projects left join img on img.image_project_id = projects.id " +
 				"order by projects.id asc";
 	}
 
