@@ -11,7 +11,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		if (isAuthorized(request)) {
 			return true;			
 		} else {
-			response.setStatus(503);
+			response.setStatus(403);
 			return false;
 		}
 	}
